@@ -1,6 +1,6 @@
 # HELPN-HGNN
 
-**HELPN-HGNN**: **H**ypergraph-**E**nhanced **L**ocal-**P**rompt **N**etwork with **H**eterogeneous **G**raph **N**eural **N**etworks
+Multimodal Brain Disease Detection via Hypergraph Neural Network with Hyper-events and Learnable Prompt Nodes (Under Review by Knowledge-based System)
 
 A framework for brain disorder classification using spatiotemporal graph neural networks, hypergraph capsule networks, and structural MRI features.
 
@@ -122,5 +122,5 @@ python run.py \
 | `--warmup_epochs` | 10 | Learning rate warm-up epochs |
 | `--scheduler` | plateau | LR scheduler (`plateau` or `cosine`) |
 
-Licence
+### Licence
 The dataset and code is made available for academic research purpose only. Under Attribution-NonCommercial 4.0 international License.

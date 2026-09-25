@@ -9,10 +9,6 @@ A multimodal brain disorder classification framework using hyper-events, learnab
 | Branch | Description |
 |---|---|
 | `main` | Stable release version |
-| `dev` | Active development, may be unstable |
-| `feat/<name>` | New feature under development (e.g., `feat/hyper-event-hga`) |
-| `fix/<name>` | Bug fix branch (e.g., `fix/data-loader-bug`) |
-| `exp/<name>` | Experimental ideas / ablation studies (e.g., `exp/expert-system-ablation`) |
 
 The current code is pushed to the `main` branch.
 

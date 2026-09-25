@@ -1,8 +1,8 @@
-# HELPN-HGNN
+# Multimodal Brain Disease Detection via Hypergraph Neural Network with Hyper-events and Learnable Prompt Nodes
 
-**HELPN-HGNN**: **H**ypergraph-**E**nhanced **L**ocal-**P**rompt **N**etwork with **H**eterogeneous **G**raph **N**eural **N**etworks
+**HELPN-HGNN** 
 
-A framework for brain disorder classification using spatiotemporal graph neural networks, hypergraph capsule networks, and structural MRI features.
+A multimodal brain disorder classification framework using hyper-events, learnable prompt nodes, hypergraph neural networks, structural MRI features, and expert system collaboration.
 
 ## Branch Naming Convention
 
@@ -10,9 +10,9 @@ A framework for brain disorder classification using spatiotemporal graph neural 
 |---|---|
 | `main` | Stable release version |
 | `dev` | Active development, may be unstable |
-| `feat/<name>` | New feature under development (e.g., `feat/hypergraph-capsule`) |
+| `feat/<name>` | New feature under development (e.g., `feat/hyper-event-hga`) |
 | `fix/<name>` | Bug fix branch (e.g., `fix/data-loader-bug`) |
-| `exp/<name>` | Experimental ideas / ablation studies (e.g., `exp/moe-ablation`) |
+| `exp/<name>` | Experimental ideas / ablation studies (e.g., `exp/expert-system-ablation`) |
 
 The current code is pushed to the `main` branch.
 
@@ -21,39 +21,39 @@ The current code is pushed to the `main` branch.
 ```
 ├── run.py                              # Entry point
 ├── models/                             # Neural network modules
-│   ├── graph_classifier.py             # Main GraphClassifier model
-│   ├── hypergraph_capsule.py           # HypergraphCapsule module
+│   ├── graph_classifier.py             # Main GraphClassifier model (HELPN-HGNN)
+│   ├── hypergraph_capsule.py           # Hypergraph feature extraction module guided by hyper-events
 │   ├── edge_attr_mlp.py               # Edge attribute MLP
-│   ├── smri_mlp.py                    # sMRI feature MLP
-│   ├── moe.py                         # Mixture of Experts
+│   ├── smri_mlp.py                    # sMRI structural phenotype feature MLP
+│   ├── moe.py                         # Expert System Collaboration / gated expert selection
 │   └── focal_loss.py                  # Focal loss function
 ├── data/                               # Data loading utilities
 │   └── data_loader.py                 # Graph cache loader, subject features, ID extraction
 ├── utils/                              # Utility functions
 │   ├── augmentation.py                # Graph augmentation (drop edge, feature noise)
 │   ├── seed.py                        # Random seed setup
-│   ├── laplacian_pe.py                # Laplacian positional encoding (with fallback)
+│   ├── laplacian_pe.py                # Laplacian positional encoding (optional, with fallback)
 │   └── logging_config.py              # Logging configuration
 ├── train/                              # Training pipeline
 │   └── trainer.py                     # Argument parsing, training/validation/test loop
 └── data_preprocessing/                 # Data preprocessing scripts
     ├── build_spatiotemporal_graph.py   # Spatiotemporal graph construction from fMRI
-    └── build_hypergraph.py             # Hypergraph construction from fMRI
+    └── build_hypergraph.py             # Hyper-event hypergraph construction from fMRI
 ```
 
 ## Model Architecture
 
 The `GraphClassifier` integrates multiple components:
 
-1. **Laplacian Positional Encoding** — encodes graph structural information
-2. **Prompt Node Injection** — injects learnable prompt nodes connected to all original nodes
-3. **Hypergraph Capsule** — extracts hypergraph features from co-activation events
-4. **GATConv Layers (×3)** — graph attention convolution with Jumping Knowledge aggregation
-5. **Transformer Encoder** — global context modeling via a learnable global token
-6. **Subject & sMRI Feature MLPs** — processes demographic and structural MRI features
-7. **Feature Fusion** — concatenates graph, subject, and sMRI embeddings
-8. **Mixture of Experts (MoE)** — adaptive expert selection with dynamic gating
-9. **Focal Loss** — handles class imbalance with adjustable gamma and label smoothing
+1. **Spatiotemporal Brain Graph Construction** — builds brain-region nodes and functional edges from 4D fMRI data
+2. **Hyper-event Construction** — detects synchronized BOLD peak activations across multiple brain regions and represents them as hyperedges
+3. **Learnable Prompt Nodes (LPN) Injection** — injects learnable prompt nodes connected to all original nodes, compressing long-range dependencies to at most two hops
+4. **Hypergraph Feature Extraction Network Guided by Hyper-events** — extracts hyperedge-level and sample-level hypergraph features from hyper-events
+5. **Hyper-event Guided Attention (HGA) Layers (×3)** — multi-head attention guided by hyper-event features; performs local aggregation, prompt-mediated global aggregation, and local-global fusion
+6. **Structural Phenotype Feature Extraction** — processes sMRI tissue proportion and mean intensity, together with gender and handedness information
+7. **Feature Fusion** — concatenates graph, demographic, and sMRI embeddings
+8. **Expert System Collaboration** — gated expert selection with dynamic weighting; implemented as MoE-style gating in code
+9. **Focal Loss** — optional training loss for class imbalance with adjustable gamma and label smoothing
 
 ## Data Preprocessing
 
@@ -68,7 +68,7 @@ python data_preprocessing/build_spatiotemporal_graph.py \
     --use_cached
 ```
 
-### Hypergraph Construction
+### Hyper-event Hypergraph Construction
 
 Builds hypergraphs from fMRI by detecting co-activation events across ROIs:
 
@@ -113,14 +113,13 @@ python run.py \
 | `--batch_size` | 16 | Batch size |
 | `--lr` | 1e-4 | Learning rate |
 | `--hidden_dim` | 64 | GNN hidden dimension |
-| `--gat_heads` | 4 | Number of GAT attention heads |
+| `--gat_heads` | 4 | Number of attention heads in HGA layers |
 | `--dropout` | 0.15 | Dropout probability |
-| `--moe_experts` | 4 | Number of MoE experts |
+| `--num_prompts` | — | Number of learnable prompt nodes (LPN) |
+| `--moe_experts` | 4 | Number of experts in Expert System Collaboration |
 | `--moe_k` | "2" | Selectable expert counts (comma-separated) |
+| `--moe_thresh` | — | Gating threshold for expert selection |
 | `--class_weights` | "1.0,1.0" | Class weights for imbalanced data |
 | `--label_smoothing` | 0.1 | Label smoothing factor |
 | `--warmup_epochs` | 10 | Learning rate warm-up epochs |
 | `--scheduler` | plateau | LR scheduler (`plateau` or `cosine`) |
-
-Licence
-The dataset and code is made available for academic research purpose only. Under Attribution-NonCommercial 4.0 international License.

@@ -122,15 +122,5 @@ python run.py \
 | `--warmup_epochs` | 10 | Learning rate warm-up epochs |
 | `--scheduler` | plateau | LR scheduler (`plateau` or `cosine`) |
 
-## Dependencies
-
-- PyTorch
-- PyTorch Geometric
-- nibabel
-- scikit-learn
-- scikit-image
-- NetworkX
-- SciPy
-- PyWavelets
-- pandas
-- numpy
+Licence
+The dataset and code is made available for academic research purpose only. Under Attribution-NonCommercial 4.0 international License.

@@ -10,8 +10,6 @@ A multimodal brain disorder classification framework using hyper-events, learnab
 |---|---|
 | `main` | Stable release version |
 
-The current code is pushed to the `main` branch.
-
 ## Project Structure
 
 ```

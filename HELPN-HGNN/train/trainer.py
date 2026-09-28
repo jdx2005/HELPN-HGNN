@@ -6,14 +6,12 @@ import torch.nn.functional as F
 from torch.utils.data import random_split
 from torch_geometric.loader import DataLoader
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report, f1_score, roc_auc_score
-import logging
 
 from models import GraphClassifier, FocalLoss
 from data import load_cached_graphs, load_subject_features, extract_subject_id
 from utils import augment_graph, set_seed, logger
 
 
-logger = logging.getLogger(__name__)
 
 
 def parse_args():

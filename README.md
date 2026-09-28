@@ -1,4 +1,4 @@
-# Multimodal Brain Disease Detection via Hypergraph Neural Network with Hyper-events and Learnable Prompt Nodes
+# Multimodal Brain Disease Detection via Hypergraph Neural Network with Hyper-events and Learnable Prompt Nodes (Under Review by Knowledge-based System)
 
 **HELPN-HGNN** 
 

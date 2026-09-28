@@ -50,6 +50,13 @@ The `GraphClassifier` integrates multiple components:
 8. **Expert System Collaboration** — gated expert selection with dynamic weighting; implemented as MoE-style gating in code
 9. **Focal Loss** — optional training loss for class imbalance with adjustable gamma and label smoothing
 
+## Environment Installation
+
+```bash
+conda create --name HELPN-HGNN_env --file requirements.txt
+conda activate HELPN-HGNN_env
+```
+
 ## Data Preprocessing
 
 ### Spatiotemporal Graph Construction

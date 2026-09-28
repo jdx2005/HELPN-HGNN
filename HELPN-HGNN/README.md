@@ -4,12 +4,6 @@
 
 A multimodal brain disorder classification framework using hyper-events, learnable prompt nodes, hypergraph neural networks, structural MRI features, and expert system collaboration.
 
-## Branch Naming Convention
-
-| Branch | Description |
-|---|---|
-| `main` | Stable release version |
-
 ## Project Structure
 
 ```

@@ -8,9 +8,10 @@ A multimodal brain disorder classification framework using hyper-events, learnab
 
 | Branch | Description |
 |---|---|
-| `main` | Stable release version |
+| `main` | Continuously Updated Version |
+| `origin` | Stable release version |
 
-## Project Structure
+## Project Structure(Main Branch)
 
 ```
 ├── run.py                              # Entry point
@@ -35,7 +36,7 @@ A multimodal brain disorder classification framework using hyper-events, learnab
     └── build_hypergraph.py             # Hyper-event hypergraph construction from fMRI
 ```
 
-## Model Architecture
+## Main Model Architecture
 
 The `GraphClassifier` integrates multiple components:
 
@@ -74,7 +75,7 @@ python data_preprocessing/build_hypergraph.py \
     --pctl 90
 ```
 
-## Training
+## Training(Main Branch)
 
 ```bash
 python run.py \

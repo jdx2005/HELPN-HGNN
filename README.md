@@ -4,38 +4,6 @@
 
 A multimodal brain disorder classification framework using hyper-events, learnable prompt nodes, hypergraph neural networks, structural MRI features, and expert system collaboration.
 
-## Branch Naming Convention
-
-| Branch | Description |
-|---|---|
-| `main` | Continuously Updated Version |
-| `origin` | Stable release version |
-
-## Project Structure(Main Branch)
-
-```
-├── run.py                              # Entry point
-├── models/                             # Neural network modules
-│   ├── graph_classifier.py             # Main GraphClassifier model (HELPN-HGNN)
-│   ├── hypergraph_capsule.py           # Hypergraph feature extraction module guided by hyper-events
-│   ├── edge_attr_mlp.py               # Edge attribute MLP
-│   ├── smri_mlp.py                    # sMRI structural phenotype feature MLP
-│   ├── moe.py                         # Expert System Collaboration / gated expert selection
-│   └── focal_loss.py                  # Focal loss function
-├── data/                               # Data loading utilities
-│   └── data_loader.py                 # Graph cache loader, subject features, ID extraction
-├── utils/                              # Utility functions
-│   ├── augmentation.py                # Graph augmentation (drop edge, feature noise)
-│   ├── seed.py                        # Random seed setup
-│   ├── laplacian_pe.py                # Laplacian positional encoding (optional, with fallback)
-│   └── logging_config.py              # Logging configuration
-├── train/                              # Training pipeline
-│   └── trainer.py                     # Argument parsing, training/validation/test loop
-└── data_preprocessing/                 # Data preprocessing scripts
-    ├── build_spatiotemporal_graph.py   # Spatiotemporal graph construction from fMRI
-    └── build_hypergraph.py             # Hyper-event hypergraph construction from fMRI
-```
-
 ## Main Model Architecture
 
 The `GraphClassifier` integrates multiple components:

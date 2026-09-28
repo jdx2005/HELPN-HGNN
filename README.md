@@ -25,7 +25,7 @@ The `GraphClassifier` integrates multiple components:
 Builds correlation graphs from 4D fMRI data using SLIC superpixel segmentation:
 
 ```bash
-python data_preprocessing/build_spatiotemporal_graph.py \
+python build_spatiotemporal_graph.py \
     --data_dir /path/to/data \
     --graph_cache_dir /path/to/graph_cache \
     --use_cached
@@ -36,7 +36,7 @@ python data_preprocessing/build_spatiotemporal_graph.py \
 Builds hypergraphs from fMRI by detecting co-activation events across ROIs:
 
 ```bash
-python data_preprocessing/build_hypergraph.py \
+python build_hypergraph.py \
     -i /path/to/rest.nii.gz \
     -o /path/to/output_dir \
     --n_segments 500 \
